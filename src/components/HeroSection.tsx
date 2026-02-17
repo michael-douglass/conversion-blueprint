@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowDown, Target, TrendingUp, Zap } from "lucide-react";
-import juanBanner from "@/assets/juan-banner.jpeg";
+import juanBanner from "@/assets/juan-banner.png";
 
 const HeroSection = () => {
   const scrollToCTA = () => {
