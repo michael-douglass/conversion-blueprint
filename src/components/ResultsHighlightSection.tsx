@@ -2,27 +2,19 @@ import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
 
 const highlights = [
-  {
-    name: "Fabiano Camoleze",
-    role: "CEO do Toc e Art",
-    quote: "No período de 45 dias, a nossa campanha já tinha gerado mais de R$ 150.000,00 em vendas!",
-  },
-  {
-    name: "João Prompero",
-    role: "Gestor de tráfego",
-    quote: "Teve um cliente que investia R$ 4.500 por mês sem resultados e, no primeiro mês, ele teve um faturamento de mais de R$ 23.000.",
-  },
-  {
-    name: "Denner Toledo",
-    role: "CEO da AnanMED",
-    quote: "Fechei 3 contratos logo após 3 semanas aplicando o método.",
-  },
+  { name: "Fabiano Camoleze", role: "CEO do Toc e Art", quote: "R$ 150.000 em vendas em apenas 45 dias!" },
+  { name: "João Prompero", role: "Gestor de tráfego", quote: "Faturamento de R$ 23.000 no primeiro mês" },
+  { name: "Denner Toledo", role: "CEO da AnanMED", quote: "3 contratos fechados em 3 semanas" },
 ];
 
 const ResultsHighlightSection = () => {
   return (
-    <section className="py-16 md:py-20 bg-primary" style={{ background: "hsl(217 91% 55%)" }}>
-      <div className="container px-4 max-w-5xl mx-auto">
+    <section className="py-14 relative overflow-hidden" style={{ background: "linear-gradient(135deg, hsla(217, 91%, 60%, 0.1), hsla(142, 72%, 40%, 0.05))" }}>
+      <div className="absolute inset-0" style={{ background: "hsl(220 15% 5%)", opacity: 0.85 }} />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+      
+      <div className="container px-4 max-w-5xl mx-auto relative z-10">
         <div className="grid md:grid-cols-3 gap-8">
           {highlights.map((h, i) => (
             <motion.div
@@ -33,12 +25,12 @@ const ResultsHighlightSection = () => {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="text-center"
             >
-              <Quote className="mx-auto mb-3 opacity-40" style={{ color: "white" }} size={24} />
-              <p className="font-bold text-lg mb-3 leading-snug" style={{ color: "white" }}>
+              <Quote className="mx-auto mb-3 text-primary/40" size={20} />
+              <p className="font-bold text-lg mb-3 leading-snug text-foreground">
                 "{h.quote}"
               </p>
-              <p className="text-sm font-semibold" style={{ color: "hsla(0,0%,100%,0.9)" }}>{h.name}</p>
-              <p className="text-xs" style={{ color: "hsla(0,0%,100%,0.6)" }}>{h.role}</p>
+              <p className="text-sm font-semibold text-primary">{h.name}</p>
+              <p className="text-xs text-muted-foreground">{h.role}</p>
             </motion.div>
           ))}
         </div>
