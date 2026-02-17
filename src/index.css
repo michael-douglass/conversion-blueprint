@@ -154,6 +154,18 @@
                 linear-gradient(135deg, hsla(33, 100%, 50%, 0.4), hsla(33, 100%, 45%, 0.3)) border-box;
     border: 1px solid transparent;
   }
+
+  .card-pulsar {
+    animation: card-pulsar 2.5s ease-in-out infinite;
+  }
+
+  .card-glow-hover {
+    transition: box-shadow 0.4s ease, border-color 0.4s ease;
+  }
+  .card-glow-hover:hover {
+    box-shadow: 0 0 48px -8px rgba(255, 140, 0, 0.35), 0 0 24px -8px rgba(255, 140, 0, 0.2);
+    border-color: hsla(33, 100%, 50%, 0.45);
+  }
 }
 
 @keyframes float {
@@ -174,4 +186,15 @@
 @keyframes slide-up {
   from { transform: translateY(20px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes card-pulsar {
+  0%, 100% {
+    box-shadow: 0 0 20px -5px rgba(255, 140, 0, 0.2);
+    border-color: hsla(33, 100%, 50%, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 40px -2px rgba(255, 140, 0, 0.4);
+    border-color: hsla(33, 100%, 50%, 0.45);
+  }
 }

@@ -109,15 +109,6 @@ const HeroSection = () => {
               <p className="text-xs text-muted-foreground">em 45 dias</p>
             </motion.div>
             <motion.div
-              animate={{ y: [0, 6, 0] }}
-              transition={{ duration: 3.5, repeat: Infinity, delay: 0.5 }}
-              className="absolute -top-10 left-1/2 -translate-x-1/2 lg:left-[42%] lg:-top-24 lg:translate-x-0 z-20 glass border-glow rounded-xl p-4"
-            >
-              <p className="text-xs text-muted-foreground">Resultados dos alunos</p>
-              <p className="text-xl font-bold text-accent">+R$ 200K</p>
-              <p className="text-xs text-muted-foreground">em 60 dias</p>
-            </motion.div>
-            <motion.div
               animate={{ y: [0, -6, 0] }}
               transition={{ duration: 4.2, repeat: Infinity, delay: 1 }}
               className="absolute top-1/2 -translate-y-1/2 right-4 lg:right-2 z-20 glass border-glow rounded-xl p-4"
