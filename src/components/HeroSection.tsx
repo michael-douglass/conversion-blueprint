@@ -18,14 +18,14 @@ const HeroSection = () => {
         backgroundSize: "60px 60px"
       }} />
 
-      <div className="container relative z-10 px-4 py-20 md:py-0">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-screen">
-          {/* Left: Text */}
+      <div className="container relative z-10 px-4 pt-28 pb-20 md:pt-36 md:pb-0">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-screen lg:items-stretch">
+          {/* Left: Text — pode sobrepor a imagem; z-index acima para poups */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="pt-24 lg:pt-0 order-2 lg:order-1"
+            className="pt-24 lg:pt-0 order-2 lg:order-1 relative z-20"
           >
             {/* Badge */}
             <motion.div
@@ -38,7 +38,7 @@ const HeroSection = () => {
               <span className="text-sm font-medium text-muted-foreground">Método exclusivo para Google Ads</span>
             </motion.div>
 
-            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-[1.1] mb-6 text-foreground">
+            <h1 className="text-3xl md:text-4xl lg:text-[45px] xl:text-6xl font-medium leading-[1.1] tracking-tighter mb-6 text-foreground">
               Você não precisa de mais aulas soltas no YouTube.{" "}
               <span className="text-gradient-blue">
                 Você precisa de um caminho estruturado e validado
@@ -80,12 +80,12 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* Right: Photo */}
+          {/* Right: Photo — colada no container até embaixo; escritas/poups podem sobrepor (z-20 na esquerda) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.3 }}
-            className="relative flex justify-center lg:justify-end order-1 lg:order-2"
+            className="relative flex justify-center lg:justify-end order-1 lg:order-2 p-0 m-0 lg:h-full lg:min-h-0"
           >
             {/* Orange/gold accent ring behind */}
             <div className="absolute top-1/2 right-1/2 lg:right-1/4 -translate-y-1/2 w-72 h-72 md:w-96 md:h-96 rounded-full border-2 opacity-20" style={{ borderColor: "hsla(30, 90%, 50%, 0.4)" }} />
@@ -94,7 +94,7 @@ const HeroSection = () => {
             <img
               src="/images/juan-banner.png"
               alt="Juan Lucas - Especialista em Google Ads"
-              className="relative z-10 w-64 md:w-80 lg:w-[28rem] rounded-2xl hero-image-glow object-cover"
+              className="relative z-10 block w-80 max-w-[90vw] md:w-96 lg:w-full lg:max-w-none lg:h-full lg:min-h-0 rounded-2xl lg:rounded-b-none hero-image-glow object-cover lg:object-[50%_35%] m-0 shrink-0"
               loading="eager"
             />
 
