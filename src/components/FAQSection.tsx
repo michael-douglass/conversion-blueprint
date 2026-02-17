@@ -35,7 +35,9 @@ const faqs = [
 
 const FAQSection = () => {
   return (
-    <section className="py-20 md:py-28 bg-section-alt" id="faq">
+    <section className="py-20 md:py-28 bg-section-alt relative" id="faq">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+
       <div className="container px-4 max-w-3xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -60,7 +62,7 @@ const FAQSection = () => {
               <AccordionItem
                 key={i}
                 value={`faq-${i}`}
-                className="bg-card border border-border rounded-xl px-6 data-[state=open]:shadow-md transition-shadow"
+                className="glass border-glow rounded-xl px-6 data-[state=open]:glow-blue transition-all duration-300"
               >
                 <AccordionTrigger className="text-foreground font-semibold text-left hover:no-underline py-5">
                   {faq.q}

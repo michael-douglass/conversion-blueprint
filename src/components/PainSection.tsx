@@ -10,7 +10,9 @@ const PainSection = () => {
   ];
 
   return (
-    <section className="py-20 md:py-28 bg-section-alt">
+    <section className="py-20 md:py-28 bg-section-alt relative overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+
       <div className="container px-4 max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -23,7 +25,7 @@ const PainSection = () => {
             Se você se identifica com isso, <span className="text-destructive">preste atenção:</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            A maioria dos empresários e gestores de tráfego estão preso num ciclo de tentativa e erro, perdendo tempo e dinheiro com conteúdos soltos na internet.
+            A maioria dos empresários e gestores de tráfego estão presos num ciclo de tentativa e erro.
           </p>
         </motion.div>
 
@@ -35,7 +37,7 @@ const PainSection = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="flex items-start gap-4 p-5 rounded-xl bg-card border border-border shadow-sm"
+              className="flex items-start gap-4 p-5 rounded-xl glass border-glow"
             >
               <XCircle className="text-destructive shrink-0 mt-0.5" size={24} />
               <p className="text-foreground font-medium text-lg">{pain}</p>
