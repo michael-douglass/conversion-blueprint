@@ -18,7 +18,7 @@ const HeroSection = () => {
         backgroundSize: "60px 60px"
       }} />
 
-      <div className="container relative z-10 px-4 pt-20 pb-12 md:pt-28 md:pb-8">
+      <div className="container relative z-10 px-4 pt-20 pb-0 md:pt-28">
         <div className="grid lg:grid-cols-[1fr_1.4fr] gap-8 lg:gap-12 items-center min-h-[70vh] lg:min-h-[85vh] lg:items-stretch">
           {/* Left: Text — pode sobrepor a imagem; z-index acima para poups */}
           <motion.div
@@ -85,7 +85,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.3 }}
-            className="relative flex justify-center lg:justify-end order-1 lg:order-2 p-0 m-0 lg:h-full lg:min-h-0 lg:-mr-4 lg:pr-0"
+            className="relative flex justify-center lg:justify-end lg:items-end order-1 lg:order-2 p-0 m-0 lg:h-full lg:min-h-0 lg:-mr-4 lg:pr-0"
           >
             {/* Orange/gold accent ring behind */}
             <div className="absolute top-1/2 right-1/2 lg:right-1/4 -translate-y-1/2 w-72 h-72 md:w-96 md:h-96 rounded-full border-2 opacity-20" style={{ borderColor: "hsla(30, 90%, 50%, 0.4)" }} />
@@ -94,11 +94,11 @@ const HeroSection = () => {
             <img
               src="/images/juan-banner.png"
               alt="Juan Lucas - Especialista em Google Ads"
-              className="relative z-10 block w-full max-w-md md:max-w-lg lg:max-w-none lg:w-full lg:h-full min-h-[320px] lg:min-h-0 rounded-2xl lg:rounded-l-2xl lg:rounded-r-none hero-image-glow object-cover object-right-top lg:object-[50%_35%] m-0 shrink-0"
+              className="relative z-10 block w-full max-w-md md:max-w-lg lg:max-w-none lg:w-full lg:h-full min-h-[320px] lg:min-h-0 rounded-2xl lg:rounded-tl-2xl lg:rounded-tr-none lg:rounded-b-none hero-image-glow object-cover object-right-top lg:object-[50%_100%] m-0 shrink-0"
               loading="eager"
             />
 
-            {/* Floating stats card */}
+            {/* Floating stats cards */}
             <motion.div
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 4, repeat: Infinity }}
@@ -107,6 +107,24 @@ const HeroSection = () => {
               <p className="text-xs text-muted-foreground">Resultados dos alunos</p>
               <p className="text-xl font-bold text-accent">+R$ 150K</p>
               <p className="text-xs text-muted-foreground">em 45 dias</p>
+            </motion.div>
+            <motion.div
+              animate={{ y: [0, 6, 0] }}
+              transition={{ duration: 3.5, repeat: Infinity, delay: 0.5 }}
+              className="absolute -top-10 left-1/2 -translate-x-1/2 lg:left-[42%] lg:-top-24 lg:translate-x-0 z-20 glass border-glow rounded-xl p-4"
+            >
+              <p className="text-xs text-muted-foreground">Resultados dos alunos</p>
+              <p className="text-xl font-bold text-accent">+R$ 200K</p>
+              <p className="text-xs text-muted-foreground">em 60 dias</p>
+            </motion.div>
+            <motion.div
+              animate={{ y: [0, -6, 0] }}
+              transition={{ duration: 4.2, repeat: Infinity, delay: 1 }}
+              className="absolute top-1/2 -translate-y-1/2 right-4 lg:right-2 z-20 glass border-glow rounded-xl p-4"
+            >
+              <p className="text-xs text-muted-foreground">Resultados dos alunos</p>
+              <p className="text-xl font-bold text-accent">+R$ 300K</p>
+              <p className="text-xs text-muted-foreground">em 90 dias</p>
             </motion.div>
           </motion.div>
         </div>
