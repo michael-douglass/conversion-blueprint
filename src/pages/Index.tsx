@@ -12,10 +12,12 @@ import GuaranteeSection from "@/components/GuaranteeSection";
 import FAQSection from "@/components/FAQSection";
 import FooterSection from "@/components/FooterSection";
 import StickyCtaBar from "@/components/StickyCtaBar";
+import FloatingOfferButton from "@/components/FloatingOfferButton";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
+      <FloatingOfferButton />
       <HeroSection />
       <PainSection />
       <MethodSection />

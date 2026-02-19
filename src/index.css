@@ -97,13 +97,13 @@
   .bg-metallic-dark {
     background: linear-gradient(
       160deg,
-      hsl(220, 12%, 6%) 0%,
-      hsl(220, 10%, 9%) 25%,
-      hsl(215, 14%, 11%) 50%,
-      hsl(220, 12%, 8%) 75%,
-      hsl(225, 15%, 6%) 100%
+      hsl(33, 100%, 18%) 0%,
+      hsl(33, 95%, 22%) 25%,
+      rgba(255, 163, 51, 0.15) 50%,
+      hsl(33, 95%, 16%) 75%,
+      hsl(33, 100%, 12%) 100%
     );
-    box-shadow: inset 0 1px 0 hsla(0, 0%, 100%, 0.03);
+    box-shadow: inset 0 1px 0 rgba(255, 163, 51, 0.06);
   }
 
   /* Feixe de luz (beam) - em evidência, percorre o container na horizontal e de cima para baixo */
@@ -320,6 +320,35 @@
     border: 1px solid transparent;
   }
 
+  /* Botão flutuante "Aproveitar a oferta" – gradiente FFA333, transparente, pulsante */
+  .floating-offer-btn {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 163, 51, 0.28) 0%,
+      rgba(255, 163, 51, 0.42) 50%,
+      rgba(255, 163, 51, 0.5) 100%
+    );
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 163, 51, 0.25);
+    animation: floating-offer-pulse 2.2s ease-in-out infinite;
+  }
+  .floating-offer-btn:hover {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 163, 51, 0.38) 0%,
+      rgba(255, 163, 51, 0.55) 50%,
+      rgba(255, 163, 51, 0.65) 100%
+    );
+  }
+  .floating-offer-btn-icon {
+    box-shadow: 0 0 14px rgba(255, 163, 51, 0.3);
+  }
+  @keyframes floating-offer-pulse {
+    0%, 100% { opacity: 0.82; box-shadow: 0 4px 20px rgba(255, 163, 51, 0.15); }
+    50% { opacity: 0.95; box-shadow: 0 6px 28px rgba(255, 163, 51, 0.25); }
+  }
+
   .card-pulsar {
     animation: card-pulsar 2.5s ease-in-out infinite;
   }
@@ -422,12 +451,20 @@
 }
 
 /* Um card por vez, subindo a partir do início (base) do container */
+/* Dois cards por slot: primeiro sobe até o topo e sai; 2s depois o segundo sobe; próximo ciclo em outro canto */
 .results-scroll-one-by-one {
-  animation: results-scroll-one-by-one 30s linear infinite;
+  animation: results-scroll-one-by-one 14s linear infinite;
 }
 .results-scroll-slot {
   height: 100%;
   min-height: 100%;
+}
+.results-scroll-slot-duo {
+  min-height: 100%;
+  height: auto;
+}
+.results-scroll-gap-2s {
+  min-height: 18%;
 }
 @keyframes results-scroll-one-by-one {
   0% { transform: translateY(0); }

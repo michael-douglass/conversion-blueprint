@@ -47,15 +47,13 @@ const OfferSection = () => {
               <span className="text-accent font-semibold text-sm">Oferta Especial</span>
             </div>
 
-            <p className="text-muted-foreground mb-3">Por menos do que o valor de um único cliente:</p>
-            
-            <div className="flex items-center justify-center gap-4 mb-2">
-              <span className="text-muted-foreground line-through text-xl opacity-60">R$ 1.997</span>
-            </div>
+            <p className="text-muted-foreground mb-2">
+              de <span className="line-through opacity-70">R$ 899,00</span> por
+            </p>
             <div className="text-4xl md:text-5xl font-black text-foreground mb-1">
-              12x <span className="text-accent">R$ 97</span>
+              12x de <span className="text-accent">R$ 51,40</span>
             </div>
-            <p className="text-muted-foreground text-sm">ou R$ 997 à vista</p>
+            <p className="text-muted-foreground text-sm">ou R$ 497 à vista</p>
           </div>
 
           <div className="grid sm:grid-cols-2 gap-3 mb-10">

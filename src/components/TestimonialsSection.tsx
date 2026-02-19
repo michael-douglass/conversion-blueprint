@@ -89,6 +89,21 @@ const TestimonialsSection = () => {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mt-14 text-center"
+        >
+          <a
+            href="#oferta"
+            className="inline-block bg-cta px-6 py-3 rounded-lg font-bold text-sm text-accent-foreground hover:scale-105 active:scale-95 transition-transform"
+          >
+            QUERO UM CAMINHO VALIDADO
+          </a>
+        </motion.div>
       </div>
     </section>
   );

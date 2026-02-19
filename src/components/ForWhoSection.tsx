@@ -34,22 +34,44 @@ const ForWhoSection = () => {
   ];
 
   return (
-    <section className="py-20 md:py-28 relative overflow-hidden bg-metallic-dark">
+    <section className="py-20 md:py-28 relative overflow-hidden bg-method-gradient">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
 
-      {/* Um card por vez, subindo a partir do início (base) do container */}
-      <div className="absolute right-0 top-0 bottom-0 w-[200px] md:w-[240px] overflow-hidden pointer-events-none z-0 opacity-90 flex justify-end">
+      {/* Dois cards sobem juntos; o primeiro sai no topo, 2s depois o outro; próximo ciclo vem de canto diferente */}
+      <div className="absolute left-0 right-0 top-0 bottom-0 overflow-hidden pointer-events-none z-0">
         <div className="results-scroll-one-by-one h-full flex flex-col">
-          {[...resultCards, ...resultCards].map((r, i) => (
-            <div key={i} className="results-scroll-slot shrink-0 flex flex-col">
-              <div className="flex-1 min-h-0" aria-hidden />
-              <div className="glass border-glow rounded-xl p-4 shrink-0">
-                <r.icon className="text-primary mb-2" size={20} />
-                <p className="text-foreground text-sm font-semibold leading-tight">{r.title}</p>
-                <p className="text-muted-foreground text-xs mt-1">{r.sub}</p>
+          {[
+            [0, 1],
+            [2, 0],
+            [1, 2],
+            [0, 1],
+            [2, 0],
+            [1, 2],
+          ].map(([idxFirst, idxSecond], i) => {
+            const rFirst = resultCards[idxFirst];
+            const rSecond = resultCards[idxSecond];
+            const firstOnRight = i % 2 === 0;
+            return (
+              <div key={i} className="results-scroll-slot results-scroll-slot-duo shrink-0 flex flex-col">
+                <div className="flex-1 min-h-0" aria-hidden />
+                <div className={`flex shrink-0 px-4 md:px-6 opacity-90 ${firstOnRight ? "justify-end" : "justify-start"}`}>
+                  <div className="glass border-glow rounded-xl p-4 w-[200px] md:w-[240px]">
+                    <rFirst.icon className="text-primary mb-2" size={20} />
+                    <p className="text-foreground text-sm font-semibold leading-tight">{rFirst.title}</p>
+                    <p className="text-muted-foreground text-xs mt-1">{rFirst.sub}</p>
+                  </div>
+                </div>
+                <div className="results-scroll-gap-2s shrink-0" aria-hidden />
+                <div className={`flex shrink-0 px-4 md:px-6 opacity-90 ${firstOnRight ? "justify-start" : "justify-end"}`}>
+                  <div className="glass border-glow rounded-xl p-4 w-[200px] md:w-[240px]">
+                    <rSecond.icon className="text-primary mb-2" size={20} />
+                    <p className="text-foreground text-sm font-semibold leading-tight">{rSecond.title}</p>
+                    <p className="text-muted-foreground text-xs mt-1">{rSecond.sub}</p>
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
