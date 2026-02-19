@@ -19,13 +19,13 @@ const HeroSection = () => {
       }} />
 
       <div className="container relative z-10 px-4 pt-20 pb-0 md:pt-28">
-        <div className="grid lg:grid-cols-[1fr_1.4fr] gap-8 lg:gap-12 items-center min-h-[70vh] lg:min-h-[85vh] lg:items-stretch">
+        <div className="grid lg:grid-cols-[1fr_1.4fr] gap-x-8 gap-y-14 lg:gap-12 items-center min-h-[70vh] lg:min-h-[85vh] lg:items-stretch">
           {/* Left: Text — no mobile fica acima da foto (order-1); no desktop à esquerda (lg:order-1) */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="pt-12 lg:pt-4 order-1 lg:order-1 relative z-20"
+            className="pt-0 lg:pt-0 -mt-5 -mb-5 order-1 lg:order-1 relative z-20"
           >
             {/* Badge */}
             <motion.div
@@ -94,7 +94,7 @@ const HeroSection = () => {
             <img
               src="/images/juan-banner.png"
               alt="Juan Lucas - Especialista em Google Ads"
-              className="relative z-10 block w-full max-w-md md:max-w-lg lg:max-w-none lg:w-full lg:h-full min-h-[320px] lg:min-h-0 rounded-2xl lg:rounded-tl-2xl lg:rounded-tr-none lg:rounded-b-none hero-image-glow object-cover object-right-top lg:object-[50%_100%] m-0 shrink-0"
+              className="relative z-10 block w-full max-w-md md:max-w-lg lg:max-w-none lg:w-full lg:h-full min-h-[320px] lg:min-h-0 rounded-2xl lg:rounded-tl-2xl lg:rounded-tr-none lg:rounded-b-none hero-image-glow object-cover object-right-top lg:object-[50%_100%] m-0 shrink-0 pt-[50px]"
               loading="eager"
             />
 

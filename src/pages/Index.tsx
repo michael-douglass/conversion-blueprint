@@ -11,7 +11,6 @@ import OfferSection from "@/components/OfferSection";
 import GuaranteeSection from "@/components/GuaranteeSection";
 import FAQSection from "@/components/FAQSection";
 import FooterSection from "@/components/FooterSection";
-import StickyCtaBar from "@/components/StickyCtaBar";
 import FloatingOfferButton from "@/components/FloatingOfferButton";
 
 const Index = () => {
@@ -31,7 +30,6 @@ const Index = () => {
       <GuaranteeSection />
       <FAQSection />
       <FooterSection />
-      <StickyCtaBar />
     </div>
   );
 };

@@ -124,7 +124,7 @@ const MethodSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="glass border-glow rounded-2xl p-6 lg:p-8 max-w-sm md:max-w-[320px] md:justify-self-end"
+            className="glass border-glow rounded-2xl p-6 lg:p-8 max-w-sm md:max-w-[320px] justify-self-center md:justify-self-end"
           >
             <div className="flex flex-col items-center md:items-start gap-4 mb-6">
               <img
