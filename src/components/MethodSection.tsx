@@ -196,8 +196,9 @@ const MethodSection = () => {
                   <img
                     src={pillar.image}
                     alt=""
-                    className="w-28 h-28 md:w-36 md:h-36 rounded-2xl object-cover border border-primary/20 shadow-xl shrink-0 mx-auto md:mx-0"
-                    loading="lazy"
+                    className="w-20 h-20 md:w-28 md:h-28 rounded-xl object-cover border border-primary/10 shadow-md shrink-0 mx-auto md:mx-0 opacity-95"
+                    loading="eager"
+                    fetchPriority="high"
                   />
                   <div className="flex-1 min-w-0">
                     <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 mb-3">
