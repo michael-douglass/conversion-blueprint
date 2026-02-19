@@ -1,5 +1,5 @@
-import { useState, useCallback } from "react";
-import { motion } from "framer-motion";
+import { useState, useCallback, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Users, Target, TrendingUp } from "lucide-react";
 import juanPortrait from "@/assets/juan-portrait.jpeg";
 
@@ -58,6 +58,7 @@ const pillars = [
     description: "Atrair o cliente certo com intenção real de compra.",
     icon: Users,
     glow: "hsla(217, 91%, 60%, 0.1)",
+    image: "/images/Cliente.png",
   },
   {
     letter: "E",
@@ -65,6 +66,7 @@ const pillars = [
     description: "Fazer o cliente escolher você e não seu concorrente.",
     icon: Target,
     glow: "hsla(142, 72%, 40%, 0.1)",
+    image: "/images/estrategia.png",
   },
   {
     letter: "O",
@@ -72,10 +74,32 @@ const pillars = [
     description: "Aprenda como vender mais sem precisar investir mais no Google Ads.",
     icon: TrendingUp,
     glow: "hsla(43, 96%, 56%, 0.08)",
+    image: "/images/otimização.png",
   },
 ];
 
 const MethodSection = () => {
+  const cardsRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: cardsRef,
+    offset: ["start end", "end start"],
+  });
+
+  const fallDistance = -140;
+  const card0Y = useTransform(scrollYProgress, [0, 0.35], [fallDistance, 0]);
+  const card0Opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
+  const card1Y = useTransform(scrollYProgress, [0.15, 0.5], [fallDistance, 0]);
+  const card1Opacity = useTransform(scrollYProgress, [0.15, 0.35], [0, 1]);
+  const card2Y = useTransform(scrollYProgress, [0.3, 0.65], [fallDistance, 0]);
+  const card2Opacity = useTransform(scrollYProgress, [0.3, 0.5], [0, 1]);
+
+  const cardTransforms = [
+    { y: card0Y, opacity: card0Opacity },
+    { y: card1Y, opacity: card1Opacity },
+    { y: card2Y, opacity: card2Opacity },
+  ];
+
   return (
     <section className="py-20 md:py-28 relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
@@ -151,45 +175,39 @@ const MethodSection = () => {
           É a metodologia refinada e validada ao longo de mais de 4 anos, baseada em 3 fundamentos:
         </motion.h1>
 
-        {/* Cards: Scroll Reveal com stagger (fade-in + slide-up) + spotlight no hover */}
-        <div className="relative max-w-2xl mx-auto min-h-[380px] md:min-h-[420px]">
+        {/* Cards: caem conforme a rolagem (scroll-linked) */}
+        <div ref={cardsRef} className="relative max-w-3xl mx-auto min-h-[480px] md:min-h-[520px] py-8">
           {pillars.map((pillar, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 32 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.05, margin: "0px 0px 50px 0px" }}
-              transition={{
-                duration: 0.5,
-                delay: i * 0.14,
-                ease: [0.25, 0.46, 0.45, 0.94],
-              }}
               className="relative w-full"
               style={{
                 zIndex: pillars.length - i,
-                marginTop: i === 0 ? 0 : 24,
+                marginTop: i === 0 ? 0 : 28,
+                y: cardTransforms[i].y,
+                opacity: cardTransforms[i].opacity,
               }}
             >
               <CardWithSpotlight
-                className="rounded-2xl"
-                style={{ boxShadow: `0 0 32px -12px ${pillar.glow}` }}
+                className="rounded-3xl"
+                style={{ boxShadow: `0 0 40px -12px ${pillar.glow}` }}
               >
-                <div className="group glass border-glow rounded-2xl p-6 md:p-8 text-center md:text-left md:flex md:items-center md:gap-6 card-glow-hover transition-all duration-500">
+                <div className="group glass rounded-3xl p-8 md:p-10 lg:p-12 text-center md:text-left md:flex md:items-center md:gap-8 card-glow-hover card-corporate transition-all duration-500 min-h-[200px] md:min-h-[220px]">
                   <img
-                    src={juanPortrait}
+                    src={pillar.image}
                     alt=""
-                    className="w-20 h-20 md:w-24 md:h-24 rounded-xl object-cover border border-primary/30 shadow-lg shrink-0 mx-auto md:mx-0"
+                    className="w-28 h-28 md:w-36 md:h-36 rounded-2xl object-cover border border-primary/20 shadow-xl shrink-0 mx-auto md:mx-0"
                     loading="lazy"
                   />
                   <div className="flex-1 min-w-0">
-                    <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 mb-2">
-                      <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-300">
-                        <span className="text-xl md:text-2xl font-black text-gradient-blue">{pillar.letter}</span>
+                    <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 mb-3">
+                      <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-300">
+                        <span className="text-2xl md:text-3xl font-black text-gradient-blue">{pillar.letter}</span>
                       </div>
-                      <pillar.icon className="text-primary opacity-60 shrink-0" size={22} />
-                      <h3 className="text-lg md:text-xl font-bold text-foreground">{pillar.title}</h3>
+                      <pillar.icon className="text-primary opacity-60 shrink-0" size={26} />
+                      <h3 className="text-xl md:text-2xl font-bold text-foreground">{pillar.title}</h3>
                     </div>
-                    <p className="text-muted-foreground text-sm md:text-base">{pillar.description}</p>
+                    <p className="text-muted-foreground text-base md:text-lg">{pillar.description}</p>
                   </div>
                 </div>
               </CardWithSpotlight>
