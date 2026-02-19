@@ -20,12 +20,12 @@ const HeroSection = () => {
 
       <div className="container relative z-10 px-4 pt-20 pb-0 md:pt-28">
         <div className="grid lg:grid-cols-[1fr_1.4fr] gap-8 lg:gap-12 items-center min-h-[70vh] lg:min-h-[85vh] lg:items-stretch">
-          {/* Left: Text — pode sobrepor a imagem; z-index acima para poups */}
+          {/* Left: Text — no mobile fica acima da foto (order-1); no desktop à esquerda (lg:order-1) */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="pt-24 lg:pt-4 order-2 lg:order-1 relative z-20"
+            className="pt-12 lg:pt-4 order-1 lg:order-1 relative z-20"
           >
             {/* Badge */}
             <motion.div
@@ -73,19 +73,19 @@ const HeroSection = () => {
               </motion.button>
 
               <div className="text-sm text-muted-foreground mt-2 sm:mt-3">
-                <span className="line-through opacity-60">De R$ 1.997</span>
+                <span className="line-through opacity-60">De R$ 899,00</span>
                 <br />
-                <span className="text-accent font-bold text-base">Por 12x R$ 97</span>
+                <span className="text-accent font-bold text-base">Por 12x de R$ 51,40</span>
               </div>
             </div>
           </motion.div>
 
-          {/* Right: Photo — colada na borda direita do container, altura máxima */}
+          {/* Right: Photo — no mobile fica abaixo do texto (order-2); no desktop à direita (lg:order-2) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.3 }}
-            className="relative flex justify-center lg:justify-end lg:items-end order-1 lg:order-2 p-0 m-0 lg:h-full lg:min-h-0 lg:-mr-4 lg:pr-0"
+            className="relative flex justify-center lg:justify-end lg:items-end order-2 lg:order-2 p-0 m-0 lg:h-full lg:min-h-0 lg:-mr-4 lg:pr-0"
           >
             {/* Orange/gold accent ring behind */}
             <div className="absolute top-1/2 right-1/2 lg:right-1/4 -translate-y-1/2 w-72 h-72 md:w-96 md:h-96 rounded-full border-2 opacity-20" style={{ borderColor: "hsla(30, 90%, 50%, 0.4)" }} />
