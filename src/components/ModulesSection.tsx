@@ -15,7 +15,17 @@ const ModulesSection = () => {
     <section className="py-20 md:py-28 bg-section-alt relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
 
-      <div className="container px-4 max-w-5xl mx-auto">
+      {/* Múltiplos feixes de luz #FF981A atravessando a seção */}
+      <div className="absolute inset-0 pointer-events-none z-0" aria-hidden>
+        <div className="beam-of-light" />
+        <div className="beam-of-light-core" />
+        <div className="beam-of-light-2" />
+        <div className="beam-of-light-core-2" />
+        <div className="beam-of-light-3" />
+        <div className="beam-of-light-core-3" />
+      </div>
+
+      <div className="container px-4 max-w-5xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

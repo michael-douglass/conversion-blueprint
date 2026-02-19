@@ -1,5 +1,23 @@
 import { motion } from "framer-motion";
-import { CheckCircle, XCircle } from "lucide-react";
+import { CheckCircle, XCircle, TrendingUp, DollarSign, BarChart3 } from "lucide-react";
+
+const resultCards = [
+  {
+    icon: TrendingUp,
+    title: "Faturamento aumentado em 100%",
+    sub: "Gráfico subindo",
+  },
+  {
+    icon: DollarSign,
+    title: "Venda mensal de 100K a mais",
+    sub: "Resultados reais",
+  },
+  {
+    icon: BarChart3,
+    title: "E mais resultados",
+    sub: "Subindo pelo método",
+  },
+];
 
 const ForWhoSection = () => {
   const forYou = [
@@ -16,10 +34,26 @@ const ForWhoSection = () => {
   ];
 
   return (
-    <section className="py-20 md:py-28 relative overflow-hidden">
+    <section className="py-20 md:py-28 relative overflow-hidden bg-metallic-dark">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
 
-      <div className="container px-4 max-w-5xl mx-auto">
+      {/* Um card por vez, subindo a partir do início (base) do container */}
+      <div className="absolute right-0 top-0 bottom-0 w-[200px] md:w-[240px] overflow-hidden pointer-events-none z-0 opacity-90 flex justify-end">
+        <div className="results-scroll-one-by-one h-full flex flex-col">
+          {[...resultCards, ...resultCards].map((r, i) => (
+            <div key={i} className="results-scroll-slot shrink-0 flex flex-col">
+              <div className="flex-1 min-h-0" aria-hidden />
+              <div className="glass border-glow rounded-xl p-4 shrink-0">
+                <r.icon className="text-primary mb-2" size={20} />
+                <p className="text-foreground text-sm font-semibold leading-tight">{r.title}</p>
+                <p className="text-muted-foreground text-xs mt-1">{r.sub}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="container px-4 max-w-5xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -34,10 +68,10 @@ const ForWhoSection = () => {
 
         <div className="grid md:grid-cols-2 gap-6">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, y: 80 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="glass border-glow-green rounded-2xl p-8"
           >
             <h3 className="text-xl font-bold text-accent mb-6 flex items-center gap-2">
@@ -54,10 +88,10 @@ const ForWhoSection = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, y: 80 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
             className="glass rounded-2xl p-8"
             style={{ border: "1px solid hsla(0, 72%, 51%, 0.15)" }}
           >

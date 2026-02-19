@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ShieldCheck } from "lucide-react";
-import juanAwards from "@/assets/juan-awards.jpeg";
+import juanPortrait from "@/assets/juan-portrait.jpeg";
 
 const GuaranteeSection = () => {
   return (
@@ -45,8 +45,8 @@ const GuaranteeSection = () => {
               <div className="w-48 h-48 rounded-full blur-3xl opacity-10" style={{ background: "hsl(43, 96%, 56%)" }} />
             </div>
             <img
-              src={juanAwards}
-              alt="Juan Lucas - Resultados comprovados"
+              src={juanPortrait}
+              alt="Juan Lucas - Especialista em Google Ads"
               className="relative rounded-2xl border-glow max-w-sm w-full"
               loading="lazy"
             />

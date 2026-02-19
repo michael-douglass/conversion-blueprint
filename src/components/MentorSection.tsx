@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import juanPortrait from "@/assets/juan-portrait.jpeg";
+import juanAwards from "@/assets/juan-awards.jpeg";
 
 const MentorSection = () => {
   return (
@@ -20,8 +20,8 @@ const MentorSection = () => {
               <div className="w-64 h-64 rounded-full blur-3xl opacity-10" style={{ background: "hsl(217, 91%, 60%)" }} />
             </div>
             <img
-              src={juanPortrait}
-              alt="Juan Lucas - Especialista em Google Ads"
+              src={juanAwards}
+              alt="Juan Lucas - Resultados comprovados"
               className="relative rounded-2xl border-glow w-full max-w-md mx-auto"
               loading="lazy"
             />

@@ -49,22 +49,16 @@ const PainSection = () => {
         </motion.div>
 
         <div className="grid md:grid-cols-[1.25fr_1fr] gap-6 lg:gap-8 items-stretch">
-          {/* Card esquerdo: dores — fundo branco, ícones laranja */}
+          {/* Card esquerdo: dores — gradiente em tons claros, ícones laranja */}
           <motion.div
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="rounded-2xl bg-white p-6 lg:p-8 shadow-xl border border-white/10"
+            className="rounded-2xl p-6 lg:p-8 shadow-xl border border-white/20 overflow-hidden card-gradient-texture-light"
           >
-            <div className="flex justify-center mb-6">
-              <div
-                className="w-14 h-14 rounded-full flex items-center justify-center"
-                style={{ backgroundColor: ORANGE }}
-              >
-                <X className="text-white" size={28} strokeWidth={2.5} />
-              </div>
-            </div>
+            <div className="absolute inset-0 rounded-2xl bg-white/10 pointer-events-none" aria-hidden />
+            <div className="relative flex flex-col">
             <h3 className="text-center text-xl font-bold text-black mb-6">
               O ciclo de tentativa e erro
             </h3>
@@ -80,16 +74,19 @@ const PainSection = () => {
                 </li>
               ))}
             </ul>
+            </div>
           </motion.div>
 
-          {/* Card direito: solução — mais estreito, levemente por cima do esquerdo, efeito pulsar */}
+          {/* Card direito: solução — gradiente texturizado, pulsar, borda glow */}
           <motion.div
             initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="rounded-2xl glass border-glow p-6 lg:p-8 card-pulsar md:-mt-8 lg:-mt-10 relative z-10"
+            className="rounded-2xl border-glow p-6 lg:p-8 card-pulsar md:-mt-8 lg:-mt-10 relative z-10 overflow-hidden card-gradient-texture"
           >
+            <div className="absolute inset-0 rounded-2xl bg-black/20 pointer-events-none" aria-hidden />
+            <div className="relative flex flex-col">
             <div className="flex justify-center mb-4">
               <div className="text-2xl font-bold text-foreground">CEO</div>
             </div>
@@ -111,6 +108,7 @@ const PainSection = () => {
                 </li>
               ))}
             </ul>
+            </div>
           </motion.div>
         </div>
       </div>

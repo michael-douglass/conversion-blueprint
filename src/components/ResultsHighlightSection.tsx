@@ -17,21 +17,31 @@ const ResultsHighlightSection = () => {
       <div className="container px-4 max-w-5xl mx-auto relative z-10">
         <div className="grid md:grid-cols-3 gap-8">
           {highlights.map((h, i) => (
-            <motion.div
+            <div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="text-center"
+              className="flex justify-center"
+              style={{ perspective: "1200px" }}
             >
-              <Quote className="mx-auto mb-3 text-primary/40" size={20} />
-              <p className="font-bold text-lg mb-3 leading-snug text-foreground">
-                "{h.quote}"
-              </p>
-              <p className="text-sm font-semibold text-primary">{h.name}</p>
-              <p className="text-xs text-muted-foreground">{h.role}</p>
-            </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                style={{
+                  transformStyle: "preserve-3d",
+                  backfaceVisibility: "hidden",
+                  animationDelay: `${i * 0.6}s`,
+                }}
+                className="text-center glass border-glow rounded-2xl p-6 w-full max-w-sm card-flip-vertical-loop"
+              >
+                <Quote className="mx-auto mb-3 text-primary/40" size={20} />
+                <p className="font-bold text-lg mb-3 leading-snug text-foreground">
+                  "{h.quote}"
+                </p>
+                <p className="text-sm font-semibold text-primary">{h.name}</p>
+                <p className="text-xs text-muted-foreground">{h.role}</p>
+              </motion.div>
+            </div>
           ))}
         </div>
       </div>

@@ -101,7 +101,7 @@ const MethodSection = () => {
   ];
 
   return (
-    <section className="py-20 md:py-28 relative overflow-hidden">
+    <section className="py-20 md:py-28 relative overflow-hidden bg-method-gradient">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
 
       <div className="container px-4 max-w-5xl mx-auto">
