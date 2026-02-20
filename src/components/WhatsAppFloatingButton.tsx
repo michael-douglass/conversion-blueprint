@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import type { MutableRefObject } from "react";
 import { motion } from "framer-motion";
 import {
   Tooltip,
@@ -23,28 +24,56 @@ const WhatsAppIcon = () => (
   </svg>
 );
 
+function clearAllTimeouts(
+  showRef: MutableRefObject<ReturnType<typeof setTimeout> | null>,
+  hideRef: MutableRefObject<ReturnType<typeof setTimeout> | null>,
+) {
+  if (showRef.current) {
+    clearTimeout(showRef.current);
+    showRef.current = null;
+  }
+  if (hideRef.current) {
+    clearTimeout(hideRef.current);
+    hideRef.current = null;
+  }
+}
+
 export const WhatsAppFloatingButton = () => {
   const [open, setOpen] = useState(false);
   const showTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const hideTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const openedByTimerRef = useRef(false);
+  const scheduleOpenRef = useRef<() => void>(() => {});
 
   useEffect(() => {
     const scheduleOpen = () => {
+      clearAllTimeouts(showTimeoutRef, hideTimeoutRef);
       showTimeoutRef.current = setTimeout(() => {
+        openedByTimerRef.current = true;
         setOpen(true);
         hideTimeoutRef.current = setTimeout(() => {
-          setOpen(false);
-          scheduleOpen();
+          if (openedByTimerRef.current) {
+            setOpen(false);
+            scheduleOpen();
+          }
         }, DIALOG_VISIBLE_MS);
       }, DIALOG_SHOW_INTERVAL_MS);
     };
-
+    scheduleOpenRef.current = scheduleOpen;
     scheduleOpen();
-    return () => {
-      if (showTimeoutRef.current) clearTimeout(showTimeoutRef.current);
-      if (hideTimeoutRef.current) clearTimeout(hideTimeoutRef.current);
-    };
+    return () => clearAllTimeouts(showTimeoutRef, hideTimeoutRef);
   }, []);
+
+  const handleOpenChange = (nextOpen: boolean) => {
+    setOpen(nextOpen);
+    if (nextOpen) {
+      openedByTimerRef.current = false;
+      clearAllTimeouts(showTimeoutRef, hideTimeoutRef);
+    } else {
+      clearAllTimeouts(showTimeoutRef, hideTimeoutRef);
+      scheduleOpenRef.current();
+    }
+  };
 
   return (
     <TooltipProvider delayDuration={0}>
@@ -54,7 +83,7 @@ export const WhatsAppFloatingButton = () => {
         transition={{ delay: 1.5, duration: 0.4 }}
         className="fixed bottom-6 right-6 z-40"
       >
-        <Tooltip open={open} onOpenChange={setOpen}>
+        <Tooltip open={open} onOpenChange={handleOpenChange}>
           <TooltipTrigger asChild>
             <a
               href={WHATSAPP_URL}
