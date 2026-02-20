@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
+import { CHECKOUT_URL } from "@/lib/constants";
 
 const StickyCtaBar = () => {
   return (
@@ -10,7 +11,9 @@ const StickyCtaBar = () => {
       className="fixed bottom-6 left-0 right-0 z-50 flex justify-center px-4 md:hidden"
     >
       <a
-        href="#oferta"
+        href={CHECKOUT_URL}
+        target="_blank"
+        rel="noopener noreferrer"
         className="floating-offer-btn group inline-flex items-center gap-1.5 rounded-full px-4 py-2 font-bold text-xs text-white shadow-lg transition-transform hover:scale-105 active:scale-95"
       >
         <span>QUERO ENTRAR NO MÉTODO CEO</span>

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
+import { CHECKOUT_URL } from "@/lib/constants";
 
 const FloatingOfferButton = () => {
   return (
@@ -11,7 +12,9 @@ const FloatingOfferButton = () => {
     >
       <div className="pointer-events-auto">
         <a
-          href="#oferta"
+          href={CHECKOUT_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           className="floating-offer-btn group inline-flex items-center gap-2 rounded-full px-5 py-2.5 font-bold text-sm text-white shadow-lg transition-transform hover:scale-105 active:scale-95"
         >
           <span>Aproveitar a oferta</span>

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Check, Zap, ShieldCheck } from "lucide-react";
+import { CHECKOUT_URL } from "@/lib/constants";
 
 const OfferSection = () => {
   const benefits = [
@@ -67,7 +68,9 @@ const OfferSection = () => {
 
           <div className="text-center">
             <motion.a
-              href="#"
+              href={CHECKOUT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               className="inline-block bg-cta px-10 py-5 rounded-xl text-lg font-bold glow-green text-accent-foreground animate-pulse-slow"

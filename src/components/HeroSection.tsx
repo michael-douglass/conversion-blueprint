@@ -1,11 +1,8 @@
 import { motion } from "framer-motion";
 import { ArrowDown, Target, TrendingUp, Zap } from "lucide-react";
+import { CHECKOUT_URL } from "@/lib/constants";
 
 const HeroSection = () => {
-  const scrollToCTA = () => {
-    document.getElementById("oferta")?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
       {/* Ambient glow orbs */}
@@ -63,14 +60,16 @@ const HeroSection = () => {
 
             {/* CTA */}
             <div className="flex flex-col sm:flex-row items-start gap-4">
-              <motion.button
-                onClick={scrollToCTA}
+              <motion.a
+                href={CHECKOUT_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className="bg-cta px-8 py-4 rounded-xl text-lg font-bold glow-green text-accent-foreground transition-all"
+                className="bg-cta px-8 py-4 rounded-xl text-lg font-bold glow-green text-accent-foreground transition-all inline-block text-center"
               >
                 QUERO VENDER NO GOOGLE ADS
-              </motion.button>
+              </motion.a>
 
               <div className="text-sm text-muted-foreground mt-2 sm:mt-3">
                 <span className="line-through opacity-60">De R$ 899,00</span>

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { BookOpen, MessageSquare, Sparkles, FileText, BarChart3, Video } from "lucide-react";
+import { CHECKOUT_URL } from "@/lib/constants";
 
 const modules = [
   { icon: BookOpen, title: "Método CEO Completo", desc: "Todos os módulos: Cliente, Estratégia e Otimização com passo a passo prático." },
@@ -65,7 +66,9 @@ const ModulesSection = () => {
           className="text-center mt-12"
         >
           <a
-            href="#oferta"
+            href={CHECKOUT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-block bg-cta px-8 py-4 rounded-xl text-lg font-bold glow-green text-accent-foreground hover:scale-105 active:scale-95 transition-transform"
           >
             QUERO ENTRAR NO MÉTODO CEO

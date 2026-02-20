@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Star, Quote } from "lucide-react";
+import { CHECKOUT_URL } from "@/lib/constants";
 
 const testimonials = [
   {
@@ -98,7 +99,9 @@ const TestimonialsSection = () => {
           className="mt-14 text-center"
         >
           <a
-            href="#oferta"
+            href={CHECKOUT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-block bg-cta px-6 py-3 rounded-lg font-bold text-sm text-accent-foreground hover:scale-105 active:scale-95 transition-transform"
           >
             QUERO UM CAMINHO VALIDADO

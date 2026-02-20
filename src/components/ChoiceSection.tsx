@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, RotateCcw } from "lucide-react";
+import { CHECKOUT_URL } from "@/lib/constants";
 
 const ChoiceSection = () => {
   return (
@@ -50,7 +51,9 @@ const ChoiceSection = () => {
               Ter uma metodologia validada para ter uma máquina de vendas no Google.
             </p>
             <a
-              href="#oferta"
+              href={CHECKOUT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-block bg-cta px-6 py-3 rounded-lg font-bold text-sm text-accent-foreground hover:scale-105 active:scale-95 transition-transform"
             >
               QUERO UM CAMINHO VALIDADO
