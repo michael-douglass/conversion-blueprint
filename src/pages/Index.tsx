@@ -12,11 +12,13 @@ import GuaranteeSection from "@/components/GuaranteeSection";
 import FAQSection from "@/components/FAQSection";
 import FooterSection from "@/components/FooterSection";
 import FloatingOfferButton from "@/components/FloatingOfferButton";
+import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
       <FloatingOfferButton />
+      <WhatsAppFloatingButton />
       <HeroSection />
       <PainSection />
       <MethodSection />
