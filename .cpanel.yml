@@ -1,5 +1,10 @@
+# Deploy no cPanel / Turbo Cloud (https://app.turbocloud.com.br/)
+# Ajuste DEPLOYPATH se o site não ficar na raiz (ex: /home/seusuario/public_html)
+# Requer Node.js configurado no cPanel (Setup Node.js App ou similar).
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/juanbr23/public_html/
-    - /bin/cp -R dist/* $DEPLOYPATH
+    - export DEPLOYPATH=$HOME/public_html
+    - npm install
+    - npm run build
+    - /bin/cp -R dist/* $DEPLOYPATH/

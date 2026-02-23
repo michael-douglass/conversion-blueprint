@@ -1,0 +1,16 @@
+# SPA: encaminhar todas as rotas para index.html (React Router)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
+
+# Segurança e cache (opcional)
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css|woff2?|ico|webp|avif)$">
+    Header set Cache-Control "public, max-age=31536000"
+  </FilesMatch>
+</IfModule>

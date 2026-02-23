@@ -64,6 +64,17 @@ This project is built with:
 
 Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
 
+### Deploy no cPanel / Turbo Cloud
+
+O projeto está configurado para deploy na [Turbo Cloud](https://app.turbocloud.com.br/) (cPanel):
+
+1. **No cPanel**: vá em **Git Version Control** e conecte este repositório.
+2. **Node.js**: crie uma aplicação Node.js em **Setup Node.js App** (para o deploy rodar `npm install` e `npm run build`).
+3. **Caminho de deploy**: por padrão os arquivos vão para `public_html`. Se o seu site ficar em outra pasta (ex.: subdomínio), edite no repositório o arquivo `.cpanel.yml` e altere `DEPLOYPATH` (ex.: `export DEPLOYPATH=$HOME/public_html/seudominio`).
+4. **Deploy**: a cada push no repositório, o cPanel executa as tarefas do `.cpanel.yml` (instala dependências, gera o build e copia a pasta `dist` para o diretório público).
+
+O arquivo `public/.htaccess` garante que o roteamento da SPA (React Router) funcione no Apache.
+
 ## Can I connect a custom domain to my Lovable project?
 
 Yes, you can!
