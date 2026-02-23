@@ -1,3 +1,9 @@
+# MIME types para módulos ES e JS (evita application/octet-stream)
+<IfModule mod_mime.c>
+  AddType application/javascript .js .mjs
+  AddType text/css .css
+</IfModule>
+
 # SPA: encaminhar todas as rotas para index.html (React Router)
 <IfModule mod_rewrite.c>
   RewriteEngine On
